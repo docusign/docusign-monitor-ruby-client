@@ -1,7 +1,7 @@
 =begin
-#DocuSign Monitor API - v2
+#Monitor API
 
-#An API for an integrator to access the features of DocuSign Monitor
+#Use the DocuSign Monitor API to receive a data feed containing atypical security events within your DocuSign account. This data goes directly to an integrated application or website.
 
 OpenAPI spec version: v2.0
 Contact: devcenter@docusign.com
