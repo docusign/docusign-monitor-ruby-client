@@ -1,5 +1,5 @@
 =begin
-#DocuSign Monitor API - v2
+#Monitor API
 
 #An API for an integrator to access the features of DocuSign Monitor
 
@@ -56,8 +56,8 @@ module DocuSign_Monitor
     # Attribute type mapping.
     def self.swagger_types
       {
-        :'filters' => :'Array<Filter>',
-        :'aggregations' => :'Array<Aggregation>',
+        :'filters' => :'Array<Object>',
+        :'aggregations' => :'Array<Object>',
         :'query_scope' => :'String',
         :'query_scope_id' => :'String'
       }
@@ -102,7 +102,7 @@ module DocuSign_Monitor
     # Check to see if the all the properties in the model are valid
     # @return true if the model is valid
     def valid?
-      query_scope_validator = EnumAttributeValidator.new('String', ['AccountId', 'OrganizationId', 'None'])
+      query_scope_validator = EnumAttributeValidator.new('String', ['OrganizationId'])
       return false unless query_scope_validator.valid?(@query_scope)
       true
     end
@@ -110,7 +110,7 @@ module DocuSign_Monitor
     # Custom attribute writer method checking allowed values (enum).
     # @param [Object] query_scope Object to be assigned
     def query_scope=(query_scope)
-      validator = EnumAttributeValidator.new('String', ['AccountId', 'OrganizationId', 'None'])
+      validator = EnumAttributeValidator.new('String', ['OrganizationId'])
       unless validator.valid?(query_scope)
         fail ArgumentError, 'invalid value for "query_scope", must be one of #{validator.allowable_values}.'
       end
