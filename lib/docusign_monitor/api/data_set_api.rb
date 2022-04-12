@@ -1,7 +1,7 @@
 =begin
 #Monitor API
 
-#Use the DocuSign Monitor API to receive a data feed containing atypical security events within your DocuSign account. This data goes directly to an integrated application or website.
+#An API for an integrator to access the features of DocuSign Monitor
 
 OpenAPI spec version: v2.0
 Contact: devcenter@docusign.com
@@ -88,6 +88,65 @@ module DocuSign_Monitor
         :return_type => 'CursoredResult')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DataSetApi#get_stream\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
+      end
+      return data, status_code, headers
+    end
+
+    # 
+    # Allows for querying existing data using filter and aggregation clauses  Required scopes: impersonation
+    # @param data_set_name The name of the dataset to query
+    # @param version The requested API version
+    # @param web_query A collection of filter clauses and aggregations scoped to one or more organizations. The fields queryScope and queryScopeId may be omitted defaulting to all applicable organizations 
+    # @return [AggregateResult]
+    def post_web_query(data_set_name, version, web_query)
+      data, _status_code, _headers = post_web_query_with_http_info(data_set_name, version,  web_query)
+      return data
+    end
+
+    # 
+    # Allows for querying existing data using filter and aggregation clauses  Required scopes: impersonation
+    # @param data_set_name The name of the dataset to query
+    # @param version The requested API version
+    # @param web_query A collection of filter clauses and aggregations scoped to one or more organizations. The fields queryScope and queryScopeId may be omitted defaulting to all applicable organizations 
+    # @return [Array<(AggregateResult, Fixnum, Hash)>] AggregateResult data, response status code and response headers
+    def post_web_query_with_http_info(data_set_name, version, web_query)
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "Calling API: DataSetApi.post_web_query ..."
+      end
+      # verify the required parameter 'data_set_name' is set
+      fail ArgumentError, "Missing the required parameter 'data_set_name' when calling DataSetApi.post_web_query" if data_set_name.nil?
+      # verify the required parameter 'version' is set
+      fail ArgumentError, "Missing the required parameter 'version' when calling DataSetApi.post_web_query" if version.nil?
+      # verify the required parameter 'web_query' is set
+      fail ArgumentError, "Missing the required parameter 'web_query' when calling DataSetApi.post_web_query" if web_query.nil?
+      # resource path
+      local_var_path = "/api/v{version}/datasets/{dataSetName}/web_query".sub('{format}','json').sub('{' + 'dataSetName' + '}', data_set_name.to_s).sub('{' + 'version' + '}', version.to_s)
+
+      # query parameters
+      query_params = {}
+
+      # header parameters
+      header_params = {}
+      # HTTP header 'Accept' (if needed)
+      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
+      # HTTP header 'Content-Type'
+      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
+
+      # form parameters
+      form_params = {}
+
+      # http body (model)
+      post_body = @api_client.object_to_http_body(web_query)
+      auth_names = []
+      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
+        :header_params => header_params,
+        :query_params => query_params,
+        :form_params => form_params,
+        :body => post_body,
+        :auth_names => auth_names,
+        :return_type => 'AggregateResult')
+      if @api_client.config.debugging
+        @api_client.config.logger.debug "API called: DataSetApi#post_web_query\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end
