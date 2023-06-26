@@ -14,10 +14,10 @@ require "uri"
 module DocuSign_Monitor
 
   class GetStreamOptions
-    # The cursor value to continue querying the data with. For an intial call, use empty string
+    # Specifies a pointer into the dataset where your query will begin. You can either provide an ISO DateTime or a string cursor (from the `endCursor` value in the response). If no value is provided, the query begins from seven days ago.  For example, to fetch event data beginning from January 1, 2022, set this value to `2022-01-01T00:00:00Z`. The response will include data about events starting from that date in chronological order. The response also includes an `endCursor` property. To fetch the next page of event data, call this endpoint again with `cursor` set to the previous `endCursor` value. 
     attr_accessor :cursor
 
-    # The maximum number of records to return, minimum of 1, maximum of 2000. Defaults to 1000 if no value is provided
+    # The maximum number of records to return. The default value is 1000.
     attr_accessor :limit
 
     def self.default
@@ -33,10 +33,10 @@ module DocuSign_Monitor
       @api_client = api_client
     end
 
-    # 
-    # Allows for the streaming of data as it becomes available  Required scopes: impersonation
-    # @param data_set_name The name of the dataset to stream
-    # @param version The requested API version
+    # Gets customer event data for an organization.
+    # Gets customer event data for the organization that owns the integration key.  The results for this endpoint are paginated by event timestamp. Use the `cursor` parameter to specify where the query begins in the dataset. Use the `limit` parameter to set the number of records returned. 
+    # @param data_set_name Must be `monitor`.
+    # @param version Must be `2`. 
     # @param DocuSign_Monitor::GetStreamOptions Options for modifying the behavior of the function.
     # @return [CursoredResult]
     def get_stream(data_set_name, version, options = DocuSign_Monitor::GetStreamOptions.default)
@@ -44,10 +44,10 @@ module DocuSign_Monitor
       return data
     end
 
-    # 
-    # Allows for the streaming of data as it becomes available  Required scopes: impersonation
-    # @param data_set_name The name of the dataset to stream
-    # @param version The requested API version
+    # Gets customer event data for an organization.
+    # Gets customer event data for the organization that owns the integration key.  The results for this endpoint are paginated by event timestamp. Use the &#x60;cursor&#x60; parameter to specify where the query begins in the dataset. Use the &#x60;limit&#x60; parameter to set the number of records returned. 
+    # @param data_set_name Must be `monitor`.
+    # @param version Must be `2`. 
     # @param DocuSign_Monitor::GetStreamOptions Options for modifying the behavior of the function.
     # @return [Array<(CursoredResult, Fixnum, Hash)>] CursoredResult data, response status code and response headers
     def get_stream_with_http_info(data_set_name, version, options = DocuSign_Monitor::GetStreamOptions.default)
@@ -88,65 +88,6 @@ module DocuSign_Monitor
         :return_type => 'CursoredResult')
       if @api_client.config.debugging
         @api_client.config.logger.debug "API called: DataSetApi#get_stream\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
-      end
-      return data, status_code, headers
-    end
-
-    # 
-    # Allows for querying existing data using filter and aggregation clauses  Required scopes: impersonation
-    # @param data_set_name The name of the dataset to query
-    # @param version The requested API version
-    # @param web_query A collection of filter clauses and aggregations scoped to one or more organizations. The fields queryScope and queryScopeId may be omitted defaulting to all applicable organizations 
-    # @return [AggregateResult]
-    def post_web_query(data_set_name, version, web_query)
-      data, _status_code, _headers = post_web_query_with_http_info(data_set_name, version,  web_query)
-      return data
-    end
-
-    # 
-    # Allows for querying existing data using filter and aggregation clauses  Required scopes: impersonation
-    # @param data_set_name The name of the dataset to query
-    # @param version The requested API version
-    # @param web_query A collection of filter clauses and aggregations scoped to one or more organizations. The fields queryScope and queryScopeId may be omitted defaulting to all applicable organizations 
-    # @return [Array<(AggregateResult, Fixnum, Hash)>] AggregateResult data, response status code and response headers
-    def post_web_query_with_http_info(data_set_name, version, web_query)
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "Calling API: DataSetApi.post_web_query ..."
-      end
-      # verify the required parameter 'data_set_name' is set
-      fail ArgumentError, "Missing the required parameter 'data_set_name' when calling DataSetApi.post_web_query" if data_set_name.nil?
-      # verify the required parameter 'version' is set
-      fail ArgumentError, "Missing the required parameter 'version' when calling DataSetApi.post_web_query" if version.nil?
-      # verify the required parameter 'web_query' is set
-      fail ArgumentError, "Missing the required parameter 'web_query' when calling DataSetApi.post_web_query" if web_query.nil?
-      # resource path
-      local_var_path = "/api/v{version}/datasets/{dataSetName}/web_query".sub('{format}','json').sub('{' + 'dataSetName' + '}', data_set_name.to_s).sub('{' + 'version' + '}', version.to_s)
-
-      # query parameters
-      query_params = {}
-
-      # header parameters
-      header_params = {}
-      # HTTP header 'Accept' (if needed)
-      header_params['Accept'] = @api_client.select_header_accept(['application/json'])
-      # HTTP header 'Content-Type'
-      header_params['Content-Type'] = @api_client.select_header_content_type(['application/json'])
-
-      # form parameters
-      form_params = {}
-
-      # http body (model)
-      post_body = @api_client.object_to_http_body(web_query)
-      auth_names = []
-      data, status_code, headers = @api_client.call_api(:POST, local_var_path,
-        :header_params => header_params,
-        :query_params => query_params,
-        :form_params => form_params,
-        :body => post_body,
-        :auth_names => auth_names,
-        :return_type => 'AggregateResult')
-      if @api_client.config.debugging
-        @api_client.config.logger.debug "API called: DataSetApi#post_web_query\nData: #{data.inspect}\nStatus code: #{status_code}\nHeaders: #{headers}"
       end
       return data, status_code, headers
     end

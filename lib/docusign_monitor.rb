@@ -19,10 +19,8 @@ require 'docusign_monitor/configuration'
 require 'docusign_monitor/client/auth/oauth'
 
 # Models
-require 'docusign_monitor/models/aggregate_result'
-require 'docusign_monitor/models/aggregate_result_result'
 require 'docusign_monitor/models/cursored_result'
-require 'docusign_monitor/models/web_query'
+require 'docusign_monitor/models/data_set'
 
 # APIs
 require 'docusign_monitor/api/data_set_api'
