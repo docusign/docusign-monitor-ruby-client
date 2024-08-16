@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="UTF-8">
+
+<title>README - RDoc Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+  var index_rel_prefix = "./";
+</script>
+
+<script src="./js/navigation.js" defer></script>
+<script src="./js/search.js" defer></script>
+<script src="./js/search_index.js" defer></script>
+<script src="./js/searcher.js" defer></script>
+<script src="./js/darkfish.js" defer></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+<body id="top" role="document" class="file">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+<div class="nav-section">
+  <h3>Table of Contents</h3>
+
+  <ul class="link-list" role="directory">
+    <li><a href="#label-The+Official+DocuSign+Monitor+Client">The Official DocuSign Monitor Client</a>
+    <li><a href="#label-Requirements">Requirements</a>
+    <li><a href="#label-Compatibility">Compatibility</a>
+    <li><a href="#label-Note">Note</a>
+    <li><a href="#label-Installation">Installation</a>
+    <li><a href="#label-Install+via+your+application-27s+Gemfile-3A">Install via your application&#39;s <strong>Gemfile</strong>:</a>
+    <li><a href="#label-Manual+install-3A">Manual install:</a>
+    <li><a href="#label-Dependencies">Dependencies</a>
+    <li><a href="#label-Code+Examples">Code Examples</a>
+    <li><a href="#label-Launchers">Launchers</a>
+    <li><a href="#label-Proof-of-concept+applications">Proof-of-concept applications</a>
+    <li><a href="#label-OAuth+Implementations">OAuth Implementations</a>
+    <li><a href="#label-Support">Support</a>
+    <li><a href="#label-License">License</a>
+    <li><a href="#label-Additional+Resources">Additional Resources</a>
+  </ul>
+</div>
+
+
+  <div id="project-metadata">
+    
+<div id="fileindex-section" class="nav-section">
+  <h3>Pages</h3>
+
+  <ul class="link-list">
+    <li><a href="./CHANGELOG_md.html">CHANGELOG</a>
+    <li><a href="./Gemfile.html">Gemfile</a>
+    <li><a href="./LICENSE.html">LICENSE</a>
+    <li><a href="./README_md.html">README</a>
+    <li><a href="./Rakefile.html">Rakefile</a>
+    <li><a href="./git_push_sh.html">git_push.sh</a>
+    <li><a href="./runLinter_sh.html">runLinter.sh</a>
+    <li><a href="./tests/Gemfile.html">Gemfile</a>
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-label="Page README.md">
+
+<h1 id="label-The+Official+DocuSign+Monitor+Client">The Official DocuSign Monitor Client<span><a href="#label-The+Official+DocuSign+Monitor+Client">&para;</a> <a href="#top">&uarr;</a></span></h1>
+
+<p><a href="https://rubygems.org/gems/docusign_monitor"><img src="https://img.shields.io/gem/v/docusign_monitor.svg?style=flat"></a> <a href="https://rubygems.org/gems/docusign_monitor"><img src="https://img.shields.io/gem/dt/docusign_monitor.svg?style=flat"></a> <a href="https://travis-ci.org/docusign/docusign-monitor-ruby-client"><img src="https://img.shields.io/travis/docusign/docusign-monitor-ruby-client.svg?style=flat"></a></p>
+
+<h2 id="label-Requirements">Requirements<span><a href="#label-Requirements">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<ul><li>
+<p>Ruby 1.9+</p>
+</li><li>
+<p>Free <a href="https://go.docusign.com/sandbox/productshot/?elqCampaignId=16531">Developer Sandbox</a></p>
+</li></ul>
+
+<h2 id="label-Compatibility">Compatibility<span><a href="#label-Compatibility">&para;</a> <a href="#top">&uarr;</a></span></h2>
+<ul><li>
+<p>Ruby 1.9+</p>
+</li></ul>
+
+<h2 id="label-Note">Note<span><a href="#label-Note">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>This open-source SDK is provided for cases where you would like to make additional changes that the SDK does not provide out-of-the-box. If you simply want to use the SDK with any of the examples shown in the <a href="https://developers.docusign.com/esign-rest-api/code-examples">Developer Center</a>, follow the installation instructions below.</p>
+
+<h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="label-Install+via+your+application-27s+Gemfile-3A">Install via your application&#39;s <strong>Gemfile</strong>:<span><a href="#label-Install+via+your+application-27s+Gemfile-3A">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ol><li>
+<p>In your application&#39;s <strong>Gemfile</strong>, add:<br>  <strong>gem &#39;docusign_monitor&#39;</strong></p>
+</li><li>
+<p>Open your preferred console.</p>
+</li><li>
+<p>In your project directory, execute the installer by typing:<br>  <strong>bundle install</strong></p>
+</li></ol>
+
+<h3 id="label-Manual+install-3A">Manual install:<span><a href="#label-Manual+install-3A">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ol><li>
+<p>Open your preferred console.</p>
+</li><li>
+<p>In the console, type:<br>  <strong>gem install docusign_monitor</strong></p>
+</li></ol>
+
+<h3 id="label-Dependencies">Dependencies<span><a href="#label-Dependencies">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>This client has the following external dependencies:</p>
+<ul><li>
+<p>Jwt&gt;=1.5.2</p>
+</li><li>
+<p>Json&gt;=2.1.0</p>
+</li><li>
+<p>Typhoeus&gt;=1.0.1</p>
+</li></ul>
+
+<h2 id="label-Code+Examples">Code Examples<span><a href="#label-Code+Examples">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<h3 id="label-Launchers">Launchers<span><a href="#label-Launchers">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>DocuSign provides a sample application code referred to as a <a href="https://github.com/docusign/code-examples-ruby">Launcher</a>. The Launcher contains a set of 31 common use cases and associated source files. These examples use either DocuSign&#39;s <a href="https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant">Authorization Code Grant</a> or <a href="https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-jsonwebtoken">JSON Web Tokens (JWT)</a> flows.</p>
+
+<h3 id="label-Proof-of-concept+applications">Proof-of-concept applications<span><a href="#label-Proof-of-concept+applications">&para;</a> <a href="#top">&uarr;</a></span></h3>
+
+<p>If your goal is to create a proof-of-concept application, DocuSign provides a set of <a href="https://github.com/docusign/qs-ruby">Quick Start</a> examples. The Quick Start examples are meant to be used with DocuSign&#39;s <a href="https://developers.docusign.com/oauth-token-generator">OAuth Token Generator</a>, which will allow you to generate tokens for the Demo/Sandbox environment only. These tokens last for eight hours and will enable you to build your proof-of-concept application without the need to fully implement an OAuth solution.</p>
+
+<h2 id="label-OAuth+Implementations">OAuth Implementations<span><a href="#label-OAuth+Implementations">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>For details regarding which type of OAuth grant will work best for your DocuSign integration, see the <a href="https://developers.docusign.com/esign-rest-api/guides/authentication">REST API Authentication Overview</a> guide located on the <a href="https://developers.docusign.com/esign-rest-api/guides/authentication">DocuSign Developer Center</a>.</p>
+
+<p>For security purposes, DocuSign recommends using the <a href="https://developers.docusign.com/esign-rest-api/guides/authentication/oauth2-code-grant">Authorization Code Grant</a> flow.</p>
+
+<h2 id="label-Support">Support<span><a href="#label-Support">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>Log issues against this client through GitHub. We also have an <a href="https://stackoverflow.com/questions/tagged/docusignapi">active developer community on Stack Overflow</a>.</p>
+
+<h2 id="label-License">License<span><a href="#label-License">&para;</a> <a href="#top">&uarr;</a></span></h2>
+
+<p>The DocuSign Ruby Client is licensed under the <a href="https://github.com/docusign/docusign-ruby-client/blob/master/LICENSE">MIT License</a>.</p>
+
+<h3 id="label-Additional+Resources">Additional Resources<span><a href="#label-Additional+Resources">&para;</a> <a href="#top">&uarr;</a></span></h3>
+<ul><li>
+<p><a href="https://developers.docusign.com">DocuSign Developer Center</a></p>
+</li><li>
+<p><a href="https://twitter.com/docusignapi">DocuSign API on Twitter</a></p>
+</li><li>
+<p><a href="https://www.linkedin.com/showcase/docusign-for-developers/">DocuSign For Developers on LinkedIn</a></p>
+</li><li>
+<p><a href="https://www.youtube.com/channel/UCJSJ2kMs_qeQotmw4-lX2NQ">DocuSign For Developers on YouTube</a></p>
+</li></ul>
+
+</main>
+
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="https://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="https://ruby.github.io/rdoc/">RDoc</a> 6.3.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
