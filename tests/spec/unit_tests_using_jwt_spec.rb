@@ -31,6 +31,7 @@ describe 'DocuSign Ruby Client Tests' do
 				if account.is_default == "true"
 					$base_uri = account.base_uri
 					$account_id = account.account_id
+					$organization_id = account.organization.organization_id if account.organization
 
 					# IMPORTANT: Use the base url from the login account to instantiant the api_client
 					base_uri = Addressable::URI.parse($base_uri)
@@ -58,7 +59,7 @@ describe 'DocuSign Ruby Client Tests' do
 
   before(:all) do
     # run before each test
-    $host = "https://lens-d.docusign.net"
+    $host = "https://api-d.docusign.com"
 
   	$expires_in_seconds = 3600 #1 hour
   	$auth_server = 'account-d.docusign.com'
@@ -76,8 +77,9 @@ describe 'DocuSign Ruby Client Tests' do
 
     $base_uri = nil
     $account_id = nil
+    $organization_id = nil
 	$api_client = nil
-	
+
 	$scopes = ["signature"]
   end
 
@@ -94,30 +96,32 @@ describe 'DocuSign Ruby Client Tests' do
 				if !account.nil?
 					$base_uri = account.base_uri
 					$account_id = account.account_id
+					$organization_id = account.organization.organization_id if account.organization
 				end
 
 				expect($account_id).to be_truthy
 				expect($base_uri).to be_truthy
+				expect($organization_id).to be_truthy
   			end
   		end
   	end
   end
 
-  describe DocuSign_Monitor::DataSetApi do
-  	describe '.get' do
-  		context 'datasets' do
-  			it 'successfully returns monitor' do
+  describe DocuSign_Monitor::DocuMonitorApi do
+  	describe '.stream' do
+  		context 'organization stream' do
+  			it 'successfully returns monitor stream' do
 				api_client = create_api_client()
-				dataset_api = DocuSign_Monitor::DataSetApi.new(api_client)
+				docu_monitor_api = DocuSign_Monitor::DocuMonitorApi.new(api_client)
 
-				data_set_name = 'monitor'
-				version = '2.0'
+				stream_options = DocuSign_Monitor::StreamOptions.new
+				stream_options.cursor = (Time.now - 24 * 60 * 60).utc.strftime('%Y-%m-%dT%H:%M:%SZ')
+				stream_options.limit = 100
 
-				getStreamOptions = DocuSign_Monitor::GetStreamOptions.new
+				stream_response = docu_monitor_api.stream($organization_id, stream_options)
 
-				dataset_stream = dataset_api.get_stream(data_set_name, version, getStreamOptions)
-
-				expect(dataset_stream).to be_truthy
+				expect(stream_response).to be_truthy
+				expect(stream_response.end_cursor).to be_truthy
   			end
   		end
   	end
